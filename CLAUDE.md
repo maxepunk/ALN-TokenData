@@ -148,7 +148,7 @@ Token values are calculated by consuming applications:
 ```
 tokenScore = BASE_VALUES[SF_ValueRating] × TYPE_MULTIPLIERS[SF_MemoryType]
 
-BASE_VALUES: {1: $100, 2: $500, 3: $1000, 4: $5000, 5: $10000}
+BASE_VALUES: {1: $10000, 2: $25000, 3: $50000, 4: $75000, 5: $150000}
 TYPE_MULTIPLIERS: {Personal: 1x, Business: 3x, Technical: 5x}
 ```
 
