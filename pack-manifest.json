@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "packId": "about-last-night",
   "version": "1.0.0",
-  "contentHash": "sha256:195f57c467f2f5a5dba86b4d478c079cb896176bba331238d45b17dacdff9108",
+  "contentHash": "sha256:57040a97ca4eec69a875c6072126598e4ca64dcef14cbb5640ad6acfd3169027",
   "engine": {
     "minVersion": "3.0.0"
   },
@@ -11,8 +11,8 @@
     {
       "path": "game.json",
       "role": "game",
-      "sha1": "2ecbb1aaf4043f8821833cd75ab81a2c85948e17",
-      "size": 2542
+      "sha1": "42304e23e9299d33b9d56beeef04b32c1a7ce655",
+      "size": 2613
     },
     {
       "path": "tokens.json",
