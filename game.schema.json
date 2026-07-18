@@ -86,6 +86,11 @@
           "countsTowardGroups": {
             "type": "boolean"
           },
+          "claims": {
+            "description": "A2/D3s2: whether a transaction in this mode CONSUMES the token. 'consuming' (the default when absent — every pre-claims mode consumed) registers a FCFS claim under duplicatePolicy; 'non-consuming' is a repeatable action — never blocked by the duplicate rules, never registering a claim. OPEN vocabulary (slice 1 convention): schema-valid as any string; the engine's gate refuses values it cannot drive (engine 3.x drives: 'consuming', 'non-consuming'). v1 limitation: 'non-consuming' with countsTowardGroups is refused at activation (non-consumed group presence needs its own contribution-semantics design).",
+            "type": "string",
+            "minLength": 1
+          },
           "displayBehavior": {
             "type": "object",
             "additionalProperties": false,
