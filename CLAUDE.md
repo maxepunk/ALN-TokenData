@@ -46,7 +46,7 @@ the old name from pack inventory (tombstone).
     "SF_RFID": "tokenId",
     "SF_ValueRating": 1-5,
     "SF_MemoryType": "Personal" | "Business" | "Technical" | "Mention" | "Party" | null,
-    "SF_Group": "Group Name (xN)" | "",
+    "SF_Group": "Group Name" | "",
     "summary": "Optional description text",
     "owner": "Character Name" | null
   }
@@ -55,8 +55,8 @@ the old name from pack inventory (tombstone).
 
 **Field Notes:**
 - `SF_*` fields are synced from Notion (source of truth)
-- `SF_MemoryType: null` is tolerated (scores 0x as UNKNOWN); the sync script warns on it
-- `SF_Group` format: `"Group Name (xN)"` where N is the group size multiplier
+- `SF_MemoryType: null` is tolerated (scores 0x as UNKNOWN); the sync script warns on it. Since D2b the type set is OPEN and pack-declared (exact-case match against `game.json` `scoring.typeMultipliers`; ALN declares Personal/Business/Technical/Mention/Party)
+- `SF_Group` (tokens v2, A3 slice 2b): the PURE group name — a `"(xN)"` suffix is schema-ILLEGAL (tokens.schema.json). Multipliers live in `game.json` `groups` (sole source). The `Group Name (xN)` shorthand survives only as the Notion authoring format; `sync_notion_to_tokens.py` is its sole parser (derives the groups block, emits pure names)
 - `video` tokens use `processingImage` as placeholder during playback
 - Asset paths are relative to the consuming application's asset directory
 - `owner`: Character who owns this memory, resolved from Notion Elements→Characters Owner relation during sync (role prefix stripped)
