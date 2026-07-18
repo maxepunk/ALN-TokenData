@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aln.tokens/tokens.schema.json",
-  "title": "ALN Token Database (tokens.json) — v1",
+  "title": "ALN Token Database (tokens.json) — v2",
   "description": "Schema for the shared token definitions produced by scripts/sync_notion_to_tokens.py and consumed by the backend orchestrator, GM scanner, web player scanner, and ESP32 scanner. v2 (A3 slice 2b): SF_Group carries the PURE group name — the '(xN)' microformat is retired; multipliers are pack RULES in game.json `groups`, and the activation gate refuses tokens naming undeclared groups. SF_MemoryType is an OPEN pack-declared id (exact-case; the gate refuses types absent from the pack's own scoring.typeMultipliers — the closed ALN enum died with the R11 genericization). Invariant not expressible here: each token's SF_RFID must equal its object key (enforced by the backend contract test and the sync script's alignment check).",
   "type": "object",
   "minProperties": 1,

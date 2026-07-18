@@ -1,9 +1,9 @@
 {
   "kind": "pack-manifest",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "packId": "about-last-night",
   "version": "1.0.0",
-  "contentHash": "sha256:361c2095ab019c8ed4ffe5d673b06d79dcb44e7e2a4fdc52d0b40f9509c10920",
+  "contentHash": "sha256:f176bfc7800d748bfbd9fed3df5ba77575a41dc2375eb6bdc707cc02793be564",
   "engine": {
     "minVersion": "3.0.0"
   },
@@ -11,7 +11,7 @@
     {
       "path": "game.json",
       "role": "game",
-      "sha1": "42304e23e9299d33b9d56beeef04b32c1a7ce655",
+      "sha1": "ddb20b316f7979a327b3c870dd5eeb05a5e62564",
       "size": 2613
     },
     {

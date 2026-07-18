@@ -8,7 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "kind": { "const": "pack-manifest" },
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": { "const": 2 },
     "packId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
     "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
     "contentHash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
