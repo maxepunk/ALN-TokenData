@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aln.tokens/game.schema.json",
-  "title": "Game Pack Rules (game.json) \u2014 v1",
+  "title": "Game Pack Rules (game.json) — v1",
   "description": "The rules of a game, expressed as data (Phase 3 A1; design: docs/plans/2026-06-13-phase3-1-pack-schemas.md in ALN-Ecosystem). game.json answers 'how does this game score and flow'; the pack-manifest answers 'what is in this pack'. v1 constrains to the engine-implemented subset; enum values marked HEADROOM in the design doc are included only where the engine can validate-and-reject them cleanly at load time. The AUTH FLOOR (owner decision 2026-07-09) is encoded structurally: session-lifecycle, show-control, and score-intervention accept only [\"staffed\"]. Invariants not expressible here (enforced by the contract test): mode ids unique; defaultEntity only meaningful on attribution-role modes; typeMultipliers keys must cover the token database's SF_MemoryType values.",
   "type": "object",
   "required": [
@@ -27,7 +27,7 @@
     },
     "requires": {
       "type": "array",
-      "description": "Engine capability ids this pack needs. The engine's capability gate refuses activation LOUDLY when any id is outside its implemented set \u2014 headroom is never silently absorbed. Optional: a pack that declares nothing is gated on nothing beyond schema/engine versions.",
+      "description": "Engine capability ids this pack needs. The engine's capability gate refuses activation LOUDLY when any id is outside its implemented set — headroom is never silently absorbed. Optional: a pack that declares nothing is gated on nothing beyond schema/engine versions.",
       "items": {
         "type": "string",
         "minLength": 1
@@ -69,17 +69,14 @@
             "type": "string"
           },
           "scoringPolicy": {
-            "enum": [
-              "standard",
-              "none"
-            ]
+            "description": "OPEN vocabulary (slice 1): any string is schema-valid; the ENGINE's capability gate refuses activation of values it cannot drive (engine 3.x drives: 'standard', 'none'). New values ship WITH their engine module + capability id — never by schema edit alone.",
+            "type": "string",
+            "minLength": 1
           },
           "entityRole": {
-            "description": "O1/P2 (corrected 2026-07-09): what the entity field MEANS in this mode \u2014 'ledger' = wallet/account that accumulates value; 'attribution' = byline identity receiving narrative credit (feeds the report, never score math)",
-            "enum": [
-              "ledger",
-              "attribution"
-            ]
+            "description": "O1/P2 (corrected 2026-07-09): what the entity field MEANS in this mode — 'ledger' = wallet/account that accumulates value; 'attribution' = byline identity receiving narrative credit (feeds the report, never score math). OPEN vocabulary (slice 1): schema-valid as any string; the engine's gate refuses values it cannot drive (engine 3.x drives: 'ledger', 'attribution').",
+            "type": "string",
+            "minLength": 1
           },
           "defaultEntity": {
             "description": "Optional picker prefill for this mode (e.g. the anonymous NPC identity in an attribution-role mode)",
@@ -94,11 +91,9 @@
             "additionalProperties": false,
             "properties": {
               "surface": {
-                "enum": [
-                  "scoreboard-rankings",
-                  "scoreboard-evidence",
-                  "none"
-                ]
+                "description": "OPEN vocabulary (slice 1): schema-valid as any string; the engine's gate refuses surfaces it cannot render (engine 3.x drives: 'scoreboard-rankings', 'scoreboard-evidence', 'none'). B12/slice 6 makes the surface set pack-extensible through this same seam.",
+                "type": "string",
+                "minLength": 1
               },
               "fields": {
                 "type": "array",
@@ -117,7 +112,7 @@
       }
     },
     "scoring": {
-      "description": "B2/B6: pack-supplied tables over the engine's fixed formula base[rating] \u00d7 mult[type]. Absorbs scoring-config.json (legacy file read as fallback during migration only).",
+      "description": "B2/B6: pack-supplied tables over the engine's fixed formula base[rating] × mult[type]. Absorbs scoring-config.json (legacy file read as fallback during migration only).",
       "type": "object",
       "required": [
         "baseValues",
@@ -200,7 +195,7 @@
       }
     },
     "groupRules": {
-      "description": "B3/A1. v1 engine implements type 'all'; 'threshold' and 'ordered' are schema headroom \u2014 a pack declaring them is REJECTED at load until the engine grows the variant.",
+      "description": "B3/A1. v1 engine implements type 'all'; 'threshold' and 'ordered' are schema headroom — a pack declaring them is REJECTED at load until the engine grows the variant.",
       "type": "object",
       "required": [
         "type",
@@ -298,7 +293,7 @@
       }
     },
     "functions": {
-      "description": "O2/P4: pack assigns engine functions to device classes, validated against class affordances (P5) at design time. AUTH FLOOR (owner 2026-07-09): the three floor functions are structurally locked to [\"staffed\"] \u2014 a pack cannot assign them lower, by schema.",
+      "description": "O2/P4: pack assigns engine functions to device classes, validated against class affordances (P5) at design time. AUTH FLOOR (owner 2026-07-09): the three floor functions are structurally locked to [\"staffed\"] — a pack cannot assign them lower, by schema.",
       "type": "object",
       "required": [
         "view-content",
