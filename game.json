@@ -70,6 +70,11 @@
       "bonusFormula": "multiplier-minus-one-times-base"
     }
   },
+  "groups": {
+    "Marcus Mention": {
+      "multiplier": 1
+    }
+  },
   "duplicatePolicy": {
     "claim": "once",
     "view": "unlimited"
