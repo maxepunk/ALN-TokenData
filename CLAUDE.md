@@ -20,10 +20,19 @@ ALN-TokenData/
   tokens.json          # Token definitions (synced from Notion)
   tokens.json.backup   # Manual backup
   tokens.schema.json   # JSON Schema for tokens.json (enforced by backend contract test)
-  scoring-config.json  # Shared scoring values (loaded by backend + GM Scanner)
+  game.json            # Pack RULES file: scoring, modes, groupRules, duplicatePolicy, gameClock
+  game.schema.json     # JSON Schema for game.json
+  pack-manifest.json   # Pack inventory + contentHash (regenerate after ANY pack-file edit:
+                       #   node backend/scripts/build-pack-manifest.js <packDir>)
+  pack-manifest.schema.json
   tag-writer.html      # NFC tag programming tool
   token-checkin.html   # Token inventory check-in tool
 ```
+
+Note: the legacy `scoring-config.json` was RETIRED in Phase 3 A3 slice 2
+(debt ledger L1) — `game.json`'s `scoring` block is the sole shared
+scoring source, and the manifest builders permanently exclude a file by
+the old name from pack inventory (tombstone).
 
 ## Token Schema
 
@@ -148,13 +157,22 @@ sleep(ms)
 formatRelativeTime(date)
 ```
 
-## Scoring Config (`scoring-config.json`)
+## Scoring Values (`game.json` `scoring` block)
 
-Single source of truth for scoring values, loaded at runtime by both the backend (`backend/src/config/index.js`) and GM Scanner (`ALNScanner/src/core/scoring.js`). Contains `baseValues` (rating -> dollar amount) and `typeMultipliers` (memory type -> multiplier). Formula:
+Single source of truth for scoring values, read at runtime by the backend
+(`packService.getScoringRules()`), the GM Scanner (`applyPackScoring()`
+via its packLoader), the post-session validators, and the config-tool
+economy editor. Contains `baseValues` (rating -> dollar amount) and
+`typeMultipliers` (memory type -> multiplier). Formula:
 
 ```
-tokenScore = baseValues[SF_ValueRating] × typeMultipliers[SF_MemoryType]
+tokenScore = scoring.baseValues[SF_ValueRating] × scoring.typeMultipliers[SF_MemoryType]
 ```
+
+After editing, regenerate the manifest
+(`node backend/scripts/build-pack-manifest.js .`) — the backend's
+freshness contract test and the scanners' per-file sha1 verify both fail
+on a drifted pack without it.
 
 ## Editing tokens.json
 
