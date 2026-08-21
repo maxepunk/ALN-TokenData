@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "packId": "about-last-night",
   "version": "1.0.0",
-  "contentHash": "sha256:1f7da6122715b76619cafe39fbf869d4112e325f9f5ed248b8fa56f98a649a83",
+  "contentHash": "sha256:9b066f984bb6ae12ec0d45df3686388124da0166a91c85b73a6106b32be81971",
   "engine": {
     "minVersion": "3.0.0"
   },
@@ -17,8 +17,8 @@
     {
       "path": "strings.json",
       "role": "strings",
-      "sha1": "f58b347e704b61edf01c0165bc5d10b5ec573aa9",
-      "size": 418
+      "sha1": "2a1fd62b7421f419e304030ed51f2136f18891ad",
+      "size": 513
     },
     {
       "path": "strings.schema.json",

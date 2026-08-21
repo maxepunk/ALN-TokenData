@@ -14,5 +14,8 @@
       "score": "Score",
       "totalValue": "Total Value"
     }
+  },
+  "scoring": {
+    "awardMessage": "Token scanned successfully. {points} points awarded."
   }
 }
