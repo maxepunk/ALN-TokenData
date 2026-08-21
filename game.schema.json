@@ -449,8 +449,8 @@
       "uniqueItems": true
     },
     "strings": {
-      "type": "string",
-      "pattern": "\\.json$"
+      "const": "strings.json",
+      "description": "Declares the display-strings sidecar (A3 slice 3a). The value is the CANONICAL filename \u2014 every consumer (manifest role assignment, the scanner's staged-refresh rules set, the engine gate) is keyed to it, so declaring means presence, not naming. Relaxing to a free filename requires role-follows-pointer support in BOTH manifest builders and the scanner loader first."
     },
     "theme": {
       "type": "string",
