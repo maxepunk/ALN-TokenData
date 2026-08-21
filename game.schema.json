@@ -184,7 +184,9 @@
               "type": "string"
             },
             "format": {
-              "type": "string"
+              "type": "string",
+              "description": "Money display spec (A3 slice 3b, ruling R-3b-1): exactly one '#,###' number token (signed integer, comma-grouped) wrapped by literal prefix/suffix affixes — e.g. \"$#,###\" or \"#,### cr\". Schema-open elsewhere, gate-enforced: the engine refuses formats it cannot drive.",
+              "pattern": "^[^#]*#,###[^#]*$"
             }
           }
         },
