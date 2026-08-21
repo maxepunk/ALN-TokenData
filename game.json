@@ -140,5 +140,6 @@
         }
       }
     ]
-  }
+  },
+  "strings": "strings.json"
 }
