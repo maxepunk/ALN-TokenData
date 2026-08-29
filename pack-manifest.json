@@ -3,16 +3,22 @@
   "schemaVersion": 2,
   "packId": "about-last-night",
   "version": "1.0.0",
-  "contentHash": "sha256:a93d4eaf08ba7e960c7b0eb1f15a1911176839f46b8e09c9c6b4196ad96c9baa",
+  "contentHash": "sha256:5d5ea4980c597a36f0eba55b9f4b6886dad96c988611ddc3220451104996aced",
   "engine": {
     "minVersion": "3.0.0"
   },
   "files": [
     {
+      "path": "cues.json",
+      "role": "cues",
+      "sha1": "c5160854984f7492bc351d71493f37567d664c1f",
+      "size": 5069
+    },
+    {
       "path": "game.json",
       "role": "game",
-      "sha1": "457eeda33c02e7e63cbfe5ab3bd51626aa372760",
-      "size": 2773
+      "sha1": "02ff196d8b6a6b07fec8b995a272511b62e9a220",
+      "size": 3328
     },
     {
       "path": "strings.json",

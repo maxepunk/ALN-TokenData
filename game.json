@@ -4,7 +4,10 @@
   "requires": [
     "scoring.tabular",
     "groupRules.all",
-    "duplicatePolicy.once"
+    "duplicatePolicy.once",
+    "cues.standing",
+    "cues.timeline",
+    "lighting.roles"
   ],
   "id": "about-last-night",
   "title": "About Last Night",
@@ -145,5 +148,24 @@
       }
     ]
   },
-  "strings": "strings.json"
+  "strings": "strings.json",
+  "cues": "cues.json",
+  "lightingRoles": [
+    "gameplay",
+    "video-playback",
+    "blackout",
+    "police-arrival-1",
+    "police-arrival-2",
+    "police-arrival-3",
+    "police-glitch"
+  ],
+  "lightingRoleFallbacks": {
+    "gameplay": "scene.game",
+    "video-playback": "scene.video",
+    "blackout": "scene.off",
+    "police-arrival-1": "scene.police_1",
+    "police-arrival-2": "scene.police2",
+    "police-arrival-3": "scene.police3",
+    "police-glitch": "scene.policeglitch"
+  }
 }
