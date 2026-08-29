@@ -487,8 +487,32 @@
       }
     },
     "surfaces": {
-      "description": "B12 headroom: engine built-in surfaces, themable per pack. Optional until the surfaces slice.",
-      "type": "object"
+      "description": "A3 slice 6 (B12): the pack SELECTS and PARAMETERIZES the three built-in display surfaces (idle loop, scoreboard, video). The surface SET is engine-fixed — a pack cannot define NEW surfaces (the constellation renderer is BILL-era headroom). A pack declaring `surfaces` must list 'surfaces.select' in `requires` (the cues/lightingRoles gate precedent).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "idleLoop": {
+          "description": "The idle-loop surface's venue-channel NAME (Q6-2) — NOT a filename. The installation profile binds the channel to a concrete media file; `config.display.idleLoopFile` is the loud fallback. `null` = this game has no idle loop (Q6-1 opt-out). Absent = the engine default idle loop. The lowercase-dash pattern forbids paths/filenames by construction.",
+          "type": ["string", "null"],
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "scoreboard": {
+          "description": "The scoreboard surface's selection + parameters.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "description": "false = this game has no scoreboard surface (Q6-1 opt-out); the engine refuses display:scoreboard. Absent = true.",
+              "type": "boolean"
+            },
+            "evidenceCycleMs": {
+              "description": "Q6-3 parameter: the BASE evidence-page cycling interval in ms. The engine speeds up to round(this*2/3) when 4+ pages (engine adaptation, not a pack value). Absent = engine default 18000.",
+              "type": "integer",
+              "minimum": 1000
+            }
+          }
+        }
+      }
     },
     "report": {
       "description": "B9: the bundle schema is engine-versioned; the pack supplies the themed rendering.",

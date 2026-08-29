@@ -7,7 +7,8 @@
     "duplicatePolicy.once",
     "cues.standing",
     "cues.timeline",
-    "lighting.roles"
+    "lighting.roles",
+    "surfaces.select"
   ],
   "id": "about-last-night",
   "title": "About Last Night",
@@ -167,5 +168,12 @@
     "police-arrival-2": "scene.police2",
     "police-arrival-3": "scene.police3",
     "police-glitch": "scene.policeglitch"
+  },
+  "surfaces": {
+    "idleLoop": "aln-idle",
+    "scoreboard": {
+      "enabled": true,
+      "evidenceCycleMs": 18000
+    }
   }
 }
