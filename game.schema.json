@@ -473,7 +473,7 @@
     },
     "cues": {
       "const": "cues.json",
-      "description": "Declares the show-cues sidecar (A3 slice 4). The value is the CANONICAL filename — every consumer (manifest role assignment, the engine's pack-file resolution, the gate) is keyed to it, so declaring means presence, not naming (3a strings precedent). A pack declaring cues must also declare the matching `requires` capability ids (cues.standing / cues.timeline / lighting.roles) — the gate refuses the incoherent combination."
+      "description": "Declares the show-cues sidecar (A3 slice 4). The value is the CANONICAL filename — every consumer (manifest role assignment, the engine's pack-file resolution, the gate) is keyed to it, so declaring means presence, not naming (3a strings precedent). A pack declaring cues must also declare the matching `requires` capability ids (cues.standing / cues.timeline / lighting.roles); the gate rule that refuses the incoherent combination lands with slice-4 S2."
     },
     "lightingRoleFallbacks": {
       "description": "TEMPORARY (ledger L7, retires at C4): one concrete venue scene id per lighting role, used ONLY when the installation profile has no binding for that role — and every such use warns loudly. Keys must be declared in lightingRoles (gate-checked). This block is the sanctioned home for concrete scene ids in a pack; cue payloads themselves are role-only by schema.",

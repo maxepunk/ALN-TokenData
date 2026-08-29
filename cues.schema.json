@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aln.tokens/cues.schema.json",
   "title": "Game Pack Show Cues (cues.json) — v1",
-  "description": "The pack's show-control content (Phase 3 A3 slice 4; design: docs/plans/2026-08-29-phase3-a3-slice4-showcontrol-pack.md in ALN-Ecosystem). This schema is the AUTHORING half of the cue-authoring contract (capability-matrix row 2.22); the engine's activation gate is the runtime half. The cue shape is the engine contract as built: `commands` XOR `timeline`, timeline entries are FLAT {at, action, payload} objects, and `trigger` may be an event trigger, a clock trigger, null, or absent (null and absent both mean: manual fire only). ONE deliberate difference from the pre-slice-4 venue file: `lighting:scene:activate` payloads carry a `role` from the pack's lighting vocabulary (game.json `lightingRoles`), never a concrete venue scene id — the installation profile binds role → instrument (B8). The trigger event enum and condition op enum are drift-tripwired against the engine tables (standingEvaluator EVENT_NORMALIZERS / CONDITION_OPS) by the pack contract suite. Invariants not expressible here (enforced by the activation gate): cue ids unique; lighting roles declared in game.json lightingRoles; actions inside the engine cue-action vocabulary with driveable payloads; at most one video entry per timeline.",
+  "description": "The pack's show-control content (Phase 3 A3 slice 4; design: docs/plans/2026-08-29-phase3-a3-slice4-showcontrol-pack.md in ALN-Ecosystem). This schema is the authoring half of the cue contract (capability-matrix row 2.22). The activation gate is the runtime half. The shape is the engine contract as built. A cue has `commands` or a `timeline`, never both. Timeline entries are flat {at, action, payload} objects. `trigger` may be an event object, a clock object, null, or absent; null and absent both mean the cue fires manually only. The trigger event enum and the condition op enum copy the engine tables (standingEvaluator EVENT_NORMALIZERS and CONDITION_OPS); a contract test fails when either side changes alone. One deliberate difference from the pre-slice-4 venue file: `lighting:scene:activate` payloads carry a `role` from game.json `lightingRoles`, never a concrete venue scene id. The installation profile binds each role to an instrument (B8). The gate enforces what this schema cannot express: unique cue ids, roles declared in lightingRoles, actions the engine can drive, at most one video entry per timeline.",
   "type": "object",
   "required": ["kind", "schemaVersion", "cues"],
   "additionalProperties": false,
@@ -219,6 +219,11 @@
           "description": "Fire at most once per game session.",
           "type": "boolean"
         },
+        "duration": {
+          "description": "Display length in seconds for the show-designer timeline view. The config-tool timeline editor reads and writes this field. The ENGINE ignores it; runtime timing derives from the entries' `at` values. Only meaningful on compound cues (dependentRequired pins it to `timeline`).",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
         "trigger": {
           "$ref": "#/$defs/trigger"
         },
@@ -257,6 +262,9 @@
             "$ref": "#/$defs/timelineEntry"
           }
         }
+      },
+      "dependentRequired": {
+        "duration": ["timeline"]
       },
       "oneOf": [
         {
