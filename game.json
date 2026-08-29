@@ -19,7 +19,9 @@
       "displayBehavior": {
         "surface": "scoreboard-rankings",
         "when": "immediate"
-      }
+      },
+      "claimedLabel": "SOLD to {entity}",
+      "icon": "💰"
     },
     {
       "id": "detective",
@@ -36,7 +38,9 @@
           "owner"
         ],
         "when": "immediate"
-      }
+      },
+      "claimedLabel": "EXPOSED by {entity}",
+      "icon": "🔍"
     }
   ],
   "scoring": {

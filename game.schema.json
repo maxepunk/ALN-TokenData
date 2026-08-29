@@ -66,7 +66,20 @@
             "minLength": 1
           },
           "verb": {
+            "description": "PRESENTATION stratum (never branched on). Declared-NOT-YET-CONSUMED: the present-tense action affordance (mode selector / scan button) is Track-D UX territory; no engine site reads verb today. It cannot derive claimedLabel ('Sell' -> 'SOLD to {entity}' is not computable morphology).",
             "type": "string"
+          },
+          "claimedLabel": {
+            "description": "A3 closers R-Q2 (PRESENTATION stratum \u2014 never branched on; additive-optional, NO schemaVersion bump per the D3s2 precedent). The past-tense claim ANNOUNCEMENT as a TEMPLATE containing exactly one {entity} token (e.g. 'SOLD to {entity}', 'EXPOSED by {entity}') \u2014 a template because the preposition varies per mode and word order must survive future packs. Rendered as TEXT (escaped) with the entity substituted via function replacement. Absent \u21d2 engine-generic 'CLAIMED by {entity}' (benign-wording class); declared-but-undrivable \u21d2 activation refusal (R-3b-1 twin class). NOT cross-checked against scoringPolicy \u2014 a non-scoring mode still renders potential value, not an amount paid (authoring hazard). Boundary rule: wording that varies WITH THE MODE and is needed at call sites holding only a mode id lives here; all other pack wording lives in strings.*.",
+            "type": "string",
+            "maxLength": 48,
+            "pattern": "^[^{}\u0000-\u001f]*\\{entity\\}[^{}\u0000-\u001f]*$"
+          },
+          "icon": {
+            "description": "A3 closers R-Q2 (PRESENTATION stratum). A short TEXT GLYPH (emoji) shown beside the claim announcement. Renders as TEXT CONTENT ONLY \u2014 never into a class, attribute, CSS custom property or style (unlike cues.json's 'icon', which is a CSS class key). Escaped at every interpolation regardless.",
+            "type": "string",
+            "maxLength": 4,
+            "pattern": "^[^<>&\"'{}\u0000-\u001f]{1,4}$"
           },
           "scoringPolicy": {
             "description": "OPEN vocabulary (slice 1): any string is schema-valid; the ENGINE's capability gate refuses activation of values it cannot drive (engine 3.x drives: 'standard', 'none'). New values ship WITH their engine module + capability id \u2014 never by schema edit alone.",

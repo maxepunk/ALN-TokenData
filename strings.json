@@ -16,6 +16,9 @@
     }
   },
   "scoring": {
-    "awardMessage": "Token scanned successfully. {points} points awarded."
+    "awardMessage": "Token scanned successfully. {pointsFormatted} awarded."
+  },
+  "terminology": {
+    "tokenNoun": "Memory"
   }
 }
