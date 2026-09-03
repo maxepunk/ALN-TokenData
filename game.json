@@ -8,7 +8,8 @@
     "cues.standing",
     "cues.timeline",
     "lighting.roles",
-    "surfaces.select"
+    "surfaces.select",
+    "theme.identity"
   ],
   "id": "about-last-night",
   "title": "About Last Night",
@@ -176,5 +177,6 @@
       "enabled": true,
       "evidenceCycleMs": 18000
     }
-  }
+  },
+  "theme": "theme.json"
 }
