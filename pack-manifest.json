@@ -1,0 +1,84 @@
+{
+  "kind": "pack-manifest",
+  "schemaVersion": 2,
+  "packId": "about-last-night",
+  "version": "1.0.0",
+  "contentHash": "sha256:7eead9c20befa14eca510d6da8a11f8237d73b6a4dd6516975c3adfcc0079ead",
+  "engine": {
+    "minVersion": "3.0.0"
+  },
+  "files": [
+    {
+      "path": "cues.json",
+      "role": "cues",
+      "sha1": "c5160854984f7492bc351d71493f37567d664c1f",
+      "size": 5069
+    },
+    {
+      "path": "game.json",
+      "role": "game",
+      "sha1": "0ec365ca230f7b7c7a887543071e78610e12744e",
+      "size": 3480
+    },
+    {
+      "path": "strings.json",
+      "role": "strings",
+      "sha1": "53a0624487e909c2e0f453a6a28f41dadfee07b1",
+      "size": 565
+    },
+    {
+      "path": "tokens.json",
+      "role": "tokens",
+      "sha1": "d3d9ead117c00c2391554f7be28aa6087e370701",
+      "size": 34081
+    }
+  ],
+  "hardware": {
+    "deviceClasses": [
+      {
+        "class": "staffed",
+        "min": 1,
+        "rationale": "transact + session-lifecycle assigned here (game.json functions)"
+      },
+      {
+        "class": "station",
+        "min": 0,
+        "recommended": 3,
+        "rationale": "intel gathering; scarcity is a design lever (P3)"
+      },
+      {
+        "class": "personal",
+        "min": 0,
+        "rationale": "optional player phones (tap-to-web, Phase 4 Track E)"
+      }
+    ],
+    "tokens": {
+      "count": 81,
+      "tech": "nfc-ntag"
+    },
+    "stack": {
+      "vlc": {
+        "usedBy": "video tokens, idle loop",
+        "onAbsent": "degrade"
+      },
+      "music": {
+        "usedBy": "cue playlists",
+        "onAbsent": "degrade"
+      },
+      "sound": {
+        "usedBy": "cue sound effects",
+        "onAbsent": "degrade"
+      },
+      "lighting": {
+        "usedBy": "lighting cues",
+        "onAbsent": "degrade"
+      }
+    },
+    "endpoints": {
+      "display.main": {
+        "usedBy": "surfaces",
+        "onAbsent": "degrade"
+      }
+    }
+  }
+}

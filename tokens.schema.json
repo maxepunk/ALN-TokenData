@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aln.tokens/tokens.schema.json",
-  "title": "ALN Token Database (tokens.json) — v1",
-  "description": "Schema for the shared token definitions produced by scripts/sync_notion_to_tokens.py and consumed by the backend orchestrator, GM scanner, web player scanner, and ESP32 scanner. v1 documents the CURRENT format, including the 'Name (xN)' SF_Group microformat — a structured group field is planned (Phase 2 backlog) and will be v2. Invariant not expressible here: each token's SF_RFID must equal its object key (enforced by the backend contract test and the sync script's alignment check).",
+  "title": "ALN Token Database (tokens.json) — v2",
+  "description": "Schema for the shared token definitions produced by scripts/sync_notion_to_tokens.py and consumed by the backend orchestrator, GM scanner, web player scanner, and ESP32 scanner. v2 (A3 slice 2b): SF_Group carries the PURE group name — the '(xN)' microformat is retired; multipliers are pack RULES in game.json `groups`, and the activation gate refuses tokens naming undeclared groups. SF_MemoryType is an OPEN pack-declared id (exact-case; the gate refuses types absent from the pack's own scoring.typeMultipliers — the closed ALN enum died with the R11 genericization). Invariant not expressible here: each token's SF_RFID must equal its object key (enforced by the backend contract test and the sync script's alignment check).",
   "type": "object",
   "minProperties": 1,
   "patternProperties": {
@@ -51,19 +51,20 @@
           "pattern": "^[A-Za-z0-9_-]+$"
         },
         "SF_ValueRating": {
-          "description": "1-5 star rating; multiplied with the SF_MemoryType multiplier per ALN-TokenData/scoring-config.json",
+          "description": "1-5 star rating; multiplied with the SF_MemoryType multiplier per game.json scoring.typeMultipliers",
           "type": "integer",
           "minimum": 1,
           "maximum": 5
         },
         "SF_MemoryType": {
-          "description": "Memory type driving the scoring multiplier. null is tolerated but scores 0x (UNKNOWN) — the sync script warns",
-          "enum": ["Personal", "Business", "Technical", "Mention", "Party", null]
+          "description": "Pack-declared memory type id driving the scoring multiplier — OPEN vocabulary, EXACT-CASE (v2/R11: the engine's activation gate refuses ids absent from the pack's own scoring.typeMultipliers). null is tolerated but scores 0x (UNKNOWN) — the sync script warns",
+          "type": ["string", "null"],
+          "minLength": 1
         },
         "SF_Group": {
-          "description": "Group membership microformat: '' (no group) or 'Group Name (xN)' where N is the completion multiplier. All members of a group must carry the identical string",
+          "description": "PURE group name (v2) — '' means no group. The completion multiplier lives in game.json `groups` (D1b); the activation gate refuses a token naming an undeclared group. The '(xN)' suffix is RETIRED and schema-illegal",
           "type": "string",
-          "pattern": "^$|^.+ \\(x[1-9][0-9]*\\)$"
+          "not": { "pattern": "\\(x[0-9]+\\)\\s*$" }
         },
         "summary": {
           "description": "Public summary shown on the scoreboard when the token is exposed via a Detective transaction",
