@@ -31,7 +31,7 @@
         "properties": {
           "path": { "type": "string", "minLength": 1, "pattern": "^[^/].*" },
           "role": {
-            "enum": ["game", "tokens", "strings", "theme", "cues", "template", "asset-image", "asset-audio", "asset-video", "other"]
+            "enum": ["game", "tokens", "strings", "theme", "cues", "asset-image", "asset-audio", "asset-video", "other"]
           },
           "sha1": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
           "size": { "type": "integer", "minimum": 0 }
