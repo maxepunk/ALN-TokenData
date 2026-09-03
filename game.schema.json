@@ -474,8 +474,8 @@
       "description": "Declares the display-strings sidecar (A3 slice 3a). The value is the CANONICAL filename \u2014 every consumer (manifest role assignment, the scanner's staged-refresh rules set, the engine gate) is keyed to it, so declaring means presence, not naming. Relaxing to a free filename requires role-follows-pointer support in BOTH manifest builders and the scanner loader first."
     },
     "theme": {
-      "type": "string",
-      "pattern": "\\.json$"
+      "const": "theme.json",
+      "description": "Names the pack's visual-identity sidecar (theme unit; canonical filename const — the strings/cues pointer pattern; manifest role + scanner loader are keyed to it). A pack declaring this must list theme.identity in `requires` (the surfaces.select gate-lint precedent). Tightened from a loose .json pattern nothing ever read (r1 census)."
     },
     "cues": {
       "const": "cues.json",
