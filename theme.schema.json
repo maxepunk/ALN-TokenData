@@ -58,7 +58,7 @@
         "glyph": {
           "type": "object",
           "additionalProperties": false,
-          "description": "The star glyphs used when display is 'stars'. Each is a 1-4 code-point plain TEXT GLYPH (the modes[].icon idiom: no markup characters, rendered as content and ESCAPED at every interpolation regardless; value twins on both engine sides strip control/bidi then re-check). 'empty' pads unearned positions at the padded site; omitting it keeps filled-only rendering there.",
+          "description": "The star glyphs used when display is 'stars'. Each is a 1-4 code-point plain TEXT GLYPH (the modes[].icon idiom: no markup characters, rendered as content and ESCAPED at every interpolation regardless; value twins on both engine sides strip control/bidi then re-check). 'empty' pads unearned positions at the padded site; omitting it keeps filled-only rendering there. DEL and bidi controls PASS this pattern but are stripped-then-checked by the VALUE twins (activation gate + scanner DECLINE), which are the runtime authority — the pattern is deliberately no stricter than the values the twins can accept (the verbNoun precedent).",
           "properties": {
             "filled": {
               "type": "string",
