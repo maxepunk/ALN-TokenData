@@ -16,6 +16,7 @@
     {
       "id": "blackmarket",
       "label": "Black Market",
+      "verbNoun": "Sale",
       "verb": "Sell",
       "scoringPolicy": "standard",
       "entityRole": "ledger",

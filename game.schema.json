@@ -69,6 +69,12 @@
             "description": "PRESENTATION stratum (never branched on). Declared-NOT-YET-CONSUMED: the present-tense action affordance (mode selector / scan button) is Track-D UX territory; no engine site reads verb today. It cannot derive claimedLabel ('Sell' -> 'SOLD to {entity}' is not computable morphology).",
             "type": "string"
           },
+          "verbNoun": {
+            "description": "A3 slice 7 (PRESENTATION stratum — never branched on; additive-optional, NO schemaVersion bump per the R-Q2 precedent). The NOUN form of this mode's action ('Sale', 'Fence') — rendered as the session report's Scoring Timeline Type cell for claims in this mode. Distinct from the sibling 'verb' (present-tense affordance, 'Sell'): noun morphology is not computable from it. Absent ⇒ engine-generic 'Claim' (benign-wording class); declared-but-undrivable ⇒ activation refusal (R-3b-1 twin class). Pattern forbids pipes/newlines/control chars — the cell must never split a markdown table row (the generator sanitizes too; this is the authoring-time twin). Same boundary rule as claimedLabel: mode-varying wording lives here, all other report wording lives in strings.report.*.",
+            "type": "string",
+            "maxLength": 24,
+            "pattern": "^[^|{}\u0000-\u001f]{1,24}$"
+          },
           "claimedLabel": {
             "description": "A3 closers R-Q2 (PRESENTATION stratum \u2014 never branched on; additive-optional, NO schemaVersion bump per the D3s2 precedent). The past-tense claim ANNOUNCEMENT as a TEMPLATE containing exactly one {entity} token (e.g. 'SOLD to {entity}', 'EXPOSED by {entity}') \u2014 a template because the preposition varies per mode and word order must survive future packs. Rendered as TEXT (escaped) with the entity substituted via function replacement. Absent \u21d2 engine-generic 'CLAIMED by {entity}' (benign-wording class); declared-but-undrivable \u21d2 activation refusal (R-3b-1 twin class). NOT cross-checked against scoringPolicy \u2014 a non-scoring mode still renders potential value, not an amount paid (authoring hazard). Boundary rule: wording that varies WITH THE MODE and is needed at call sites holding only a mode id lives here; all other pack wording lives in strings.*.",
             "type": "string",
@@ -511,17 +517,6 @@
               "minimum": 1000
             }
           }
-        }
-      }
-    },
-    "report": {
-      "description": "B9: the bundle schema is engine-versioned; the pack supplies the themed rendering.",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "template": {
-          "type": "string",
-          "minLength": 1
         }
       }
     }
