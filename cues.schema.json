@@ -208,8 +208,8 @@
           "minLength": 1
         },
         "icon": {
-          "description": "A CSS class key on the GM quick-fire grid (NOT a text glyph — contrast game.json modes[].icon). Kept to class-name-safe characters.",
-          "type": "string",
+          "description": "A CSS class key on the GM quick-fire grid (NOT a text glyph — contrast game.json modes[].icon). Kept to class-name-safe characters. null means the same as absent (“no icon” — the value the config-tool editor historically wrote for a cleared field); the gate and engine treat both identically, and the pattern binds the string form only.",
+          "type": ["string", "null"],
           "pattern": "^[a-z0-9][a-z0-9-]*$"
         },
         "quickFire": {
