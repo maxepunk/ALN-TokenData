@@ -84,6 +84,14 @@
       "display.main": {
         "usedBy": "surfaces",
         "onAbsent": "degrade"
+      },
+      "audio.sinks": {
+        "usedBy": "cue sound effects, music, video audio",
+        "onAbsent": "degrade"
+      },
+      "lighting.instruments": {
+        "usedBy": "lighting cues",
+        "onAbsent": "degrade"
       }
     }
   }
